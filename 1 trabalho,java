@@ -1,0 +1,418 @@
+package br-uern.di.poo.claudio.trabalho1; 
+
+import java.util.Scanner;
+
+
+class Questa2_33 {        
+    
+    public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Altura(metro): ");
+            double altura = scanner.nextDouble();
+            System.out.print("Peso(quilograma): ");
+            double kg = scanner.nextDouble();
+            double imc = kg / (altura * altura);
+            System.out.println("Seu IMC: " + imc);
+            scanner.close();
+            if(imc < 18.5) {
+                System.out.print("Underweight)");
+            }else if (imc > 18.5 && imc < 24.9 ) {
+                System.out.print("Normal)");
+            }else if (imc > 25 && imc < 29.9) {
+                System.out.print("Overweight)");
+            }else {
+                System.out.print("Obese)");
+            }
+        }    
+}
+
+class Questao2_35 {
+    public static void main(String[] args){
+        float kgPorDia = 2;
+        double gasPorLitro = 6.742;
+        float kgPorLitro = 10;
+        float estacionamentoPorDia = 68;
+        float pedagioPorDia = 15;
+        double custoDiario = kgPorDia * kgPorLitro * gasPorLitro + estacionamentoPorDia + pedagioPorDia;
+        System.out.print("Você economizara por dia: " + custoDiario);
+    }
+}
+
+class Questao3_16 {
+    
+    public static class HeartRates{
+        private String nome;
+        private String sobrenome;
+        private int dia;
+        private int mes;
+        private int ano;
+    
+        public HeartRates(String nome, String sobrenome, int dia, int mes, int ano){
+            this.nome = nome;
+            this.sobrenome = sobrenome;
+            this.dia = dia;
+            this.mes = mes;
+            this.ano = ano;
+        }
+    
+        public int qualIdade(){
+            int idade = 2022 - getAno();
+            return idade;
+        }
+    
+        public int qualMax(){
+            int frequenciaMax = 220 - qualIdade();
+            return frequenciaMax;
+        }
+    
+        public int qualAlvo(){
+            int frequenciaAlvo = (68*qualMax())/100;
+            return frequenciaAlvo; 
+        }
+        
+        public String getNome() {
+            return nome;
+          }
+        public void setNome(String novoNome) {
+            this.nome = novoNome;
+          }
+        public String getSobrenome() {
+            return sobrenome;
+          }
+        public void setSobrenome(String novoSobrenome) {
+            this.sobrenome = novoSobrenome;
+          }
+        public int getDia() {
+            return dia;
+          }
+        public void setDia(int novoDia) {
+            this.dia = novoDia;
+          }
+        public int getMes() {
+            return mes;
+          }
+        public void setMes(int novoMes) {
+            this.mes = novoMes;
+          }
+        public int getAno() {
+            return ano;
+          }
+        public void setAno(int novoAno) {
+            this.ano = novoAno;
+          }
+    }
+    
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Nome: ");
+        String nome = scanner.nextLine().trim();
+        System.out.print("Sobrenome: ");
+        String sobrenome = scanner.nextLine().trim();
+        System.out.print("Data de nascimento (dd/mm/aa): ");
+        int dia = scanner.nextInt();
+        int mes = scanner.nextInt();
+        int ano = scanner.nextInt();
+        HeartRates pessoa =  new HeartRates(nome, sobrenome, dia, mes, ano);
+        pessoa.setNome(nome);
+        pessoa.setSobrenome(sobrenome);
+        pessoa.setDia(dia);
+        pessoa.setMes(mes);
+        pessoa.setAno(ano);
+        System.out.println("(Nome: " + nome + ") (Sobrenome: " + sobrenome + ") (Data de nascimento (dd/mm/aa): " + dia + "/" + mes + "/" + ano + ")");
+        System.out.println("(Idade: " + pessoa.qualIdade() + ")");
+        System.out.println("(Intervalo de frequencia cardiaca maxima: " + pessoa.qualMax() + ")");
+        System.out.println("(Frequencia cardiaca alvo: " + pessoa.qualAlvo() + ")");
+        scanner.close();
+    }
+}
+
+class Questao3_17 {
+    
+    public static class HealthProfile{
+        private String nome;
+        private String sobrenome;
+        private String sexo;
+        private int dia;
+        private int mes;
+        private int ano;
+        private float altura;
+        private float peso;
+    
+        public HealthProfile(String nome, String sobrenome, String sexo, int dia, int mes, int ano, float altura, float peso){
+            this.nome = nome;
+            this.sobrenome = sobrenome;
+            this.sexo = sexo;
+            this.dia = dia;
+            this.mes = mes;
+            this.ano = ano;
+            this.altura = altura;
+            this.peso = peso;
+        }
+    
+        public int qualIdade(){
+            int idade = 2022 - getAno();
+            return idade;
+        }
+
+        public int qualMax(){
+            int frequenciaMax = 220 - qualIdade();
+            return frequenciaMax;
+        }
+    
+        public int qualAlvo(){
+            int frequenciaAlvo = (68*qualMax())/100;
+            return frequenciaAlvo; 
+        }
+
+        public void qualImc(){
+            float imc = getPeso() / (getAltura() * getAltura());
+            System.out.println("IMC < 18.5 = Underweight");
+            System.out.println("18,5 < IMC < 24,9 = Normal");
+            System.out.println("25 < IMC < 29,9 = Overweight");
+            System.out.println("IMC > 30 = Underweight");
+            System.out.println("(Seu IMC: " + imc + ")");
+            if(imc < 18.5) {
+                System.out.print("(Underweight)");
+            }else if (imc > 18.5 && imc < 24.9 ) {
+                System.out.print("(Normal)");
+            }else if (imc > 25 && imc < 29.9) {
+                System.out.print("(Overweight)");
+            }else {
+                System.out.print("(Obese)");
+            }
+        }
+
+        
+        public String getNome() {
+            return nome;
+          }
+        public void setNome(String novoNome) {
+            this.nome = novoNome;
+          }
+        public String getSobrenome() {
+            return sobrenome;
+          }
+        public void setSobrenome(String novoSobrenome) {
+            this.sobrenome = novoSobrenome;
+          }
+        public String getSexo() {
+            return sexo;
+          }
+        public void setSexo(String novoSexo) {
+            this.sexo = novoSexo;
+          }
+        public int getDia() {
+            return dia;
+          }
+        public void setDia(int novoDia) {
+            this.dia = novoDia;
+          }
+        public int getMes() {
+            return mes;
+          }
+        public void setMes(int novoMes) {
+            this.mes = novoMes;
+          }
+        public int getAno() {
+            return ano;
+          }
+        public void setAno(int novoAno) {
+            this.ano = novoAno;
+          }
+        public float getAltura() {
+            return altura;
+          }
+        public void setAltura(float novoAltura) {
+            this.altura = novoAltura;
+          }
+        public float getPeso() {
+            return peso;
+          }
+        public void setPeso(float novoPeso) {
+            this.peso = novoPeso;
+          }
+    }
+    
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Nome: ");
+        String nome = scanner.nextLine().trim();
+        System.out.print("Sobrenome: ");
+        String sobrenome = scanner.nextLine().trim();
+        System.out.print("Sexo (M/F): ");
+        String sexo = scanner.nextLine().trim();
+        System.out.print("Data de nascimento (dd/mm/aa): ");
+        int dia = scanner.nextInt();
+        int mes = scanner.nextInt();
+        int ano = scanner.nextInt();
+        System.out.print("Altura: ");
+        float altura = scanner.nextFloat();
+        System.out.print("Peso: ");
+        float peso = scanner.nextFloat();
+        HealthProfile pessoa =  new HealthProfile(nome, sobrenome, sexo, dia, mes, ano, altura, peso);
+        pessoa.setNome(nome);
+        pessoa.setSobrenome(sobrenome);
+        pessoa.setSexo(sexo);
+        pessoa.setDia(dia);
+        pessoa.setMes(mes);
+        pessoa.setAno(ano);
+        pessoa.setAltura(altura);
+        pessoa.setPeso(peso);
+        System.out.println(" ");
+        System.out.println("(Nome: " + nome + ") (Sobrenome: " + sobrenome + ") (Sexo: " + sexo + ") (Data de nascimento (dd/mm/aa): " + dia + "/" + mes + "/" + ano + ")");
+        System.out.println("(Idade: " + pessoa.qualIdade() + ")");
+        System.out.println("(Intervalo de frequencia cardiaca maxima: " + pessoa.qualMax() + ")");
+        System.out.println("(Frequencia cardiaca alvo: " + pessoa.qualAlvo() + ")");
+        pessoa.qualImc();
+        scanner.close();
+    }
+}
+
+
+class Questao4_38{
+    
+    public static int cripto(int digito){
+        int digitoFinal = (digito+7) % 10;
+        return digitoFinal;
+    }
+
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite um numero de 4 digitos: ");
+        int numero = scanner.nextInt();
+        int numeroCopia = numero;
+        int digito4 = numeroCopia % 10;
+        numeroCopia /= 10;
+        int digito3 = numeroCopia % 10;
+        numeroCopia /= 10;
+        int digito2 = numeroCopia % 10; 
+        numeroCopia /= 10;
+        int digito1 = numeroCopia % 10; 
+        numeroCopia /= 10;
+        int cripto1 = cripto(digito1);
+        int cripto2 = cripto(digito2);
+        int cripto3 = cripto(digito3);
+        int cripto4 = cripto(digito4);
+        System.out.println(cripto3 + "" + cripto4 + "" + cripto1 + "" + cripto2);
+        scanner.close();
+        
+    }
+}
+
+
+class Questao4_39{
+    public static void main(String[] args){
+        int coluna = 0;
+        int coluna2 = 0;
+        int coluna3 = 0;
+        int x = 1;
+        long z = 7753000000L;
+        long[][] crescDemo = new long[75][3];
+        while(coluna < 75){
+            crescDemo[coluna][0] = x;
+            ++coluna;
+            ++x;
+        }
+        while(coluna2 < 75){
+            crescDemo[coluna2][1] = z;
+            ++coluna2;
+            z = z + 77530000L;
+        }
+        while(coluna3 < 75){
+            crescDemo[coluna3][2] = 77530000L;
+            ++coluna3;
+        }
+
+        for (int i=0; i<crescDemo.length; i++){
+            for(int j=0; j<crescDemo[i].length; j++){
+                System.out.print(crescDemo[i][j] + " ");
+            }
+            System.out.println();
+        }
+        long dobroPop = 7753000000L * 2/77530000;
+        System.out.println("(Em quantos anos a populaçao ira dobrar: " + dobroPop + " anos)");
+
+    }
+}
+
+
+class Questao5_21{
+    
+    public static void main(String[] args){
+        int acertos = 0;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("");
+        System.out.println("I - O aquecimento global é um processo caracterizado pelo aumento da temperatura média do planeta. Ele é consequência da intensificação de qual fenômeno natural do planeta?");
+        System.out.println("1) Destruição da camada de ozônio");
+        System.out.println("2) Inversão térmica");
+        System.out.println("3) Efeito estufa");
+        System.out.println("4) Chuva ácida");
+        System.out.print("Digite o numero da resposta: ");
+        int opcao1 = scanner.nextInt();
+        if (opcao1 == 3){
+            ++acertos;
+        }
+
+        System.out.println("");
+        System.out.println("II - O aquecimento global acarretará uma série de alterações no planeta ao longo do tempo. Analise as alternativas abaixo e marque aquela que não indica uma consequência desse grave aumento da temperatura do planeta.");
+        System.out.println("1) Derretimento das calotas polares");
+        System.out.println("2) Aumento da ocorrência de terremotos");
+        System.out.println("3) Mudanças nos regimes de chuvas");
+        System.out.println("4) Aumento dos níveis dos oceanos");
+        System.out.print("Digite o numero da resposta: ");
+        int opcao2 = scanner.nextInt();
+        if (opcao2 == 2){
+            ++acertos;
+        }
+        
+        System.out.println("");
+        System.out.println("III - O aquecimento global é considerado por inúmeros cientistas como um fenômeno provocado pelo homem em função do desequilíbrio causado no ciclo do carbono. Considerando que esses cientistas estejam certos, é correto afirmar que:");
+        System.out.println("1) Mecanismos que aumentam o sequestro de carbono por organismos autotróficos reduzem a disponibilidade do monóxido de carbono na atmosfera, contribuindo para a diminuição do efeito estufa.");
+        System.out.println("2) A liberação do gás carbônico na atmosfera em decorrência de atividades humanas, como a queima de combustíveis fósseis, é feita a uma velocidade muito maior do que sua assimilação pela fotossíntese.");
+        System.out.println("3) O aumento da concentração de gás carbônico na atmosfera está sendo provocado, principalmente, pela diminuição no sequestro do carbono pelos organismos fotossintetizantes.");
+        System.out.println("4) As queimadas florestais são a principal causa do aquecimento global.");
+        System.out.print("Digite o numero da resposta: ");
+        int opcao3 = scanner.nextInt();
+        if (opcao3 == 2){
+            ++acertos;
+        }
+        
+        System.out.println("");
+        System.out.println("IV - Cientistas acreditam que o reflorestamento e o plantio de árvores em áreas sem vegetação podem contribuir para minimizar o aquecimento global. A redução desse aquecimento ocorreria porque:");
+        System.out.println("1) Diminuiria a quantidade de dióxido de carbono na atmosfera, que seria utilizado pela fotossíntese.");
+        System.out.println("2) Aumentaria a quantidade de dióxido de carbono na atmosfera, liberado pela respiração celular.");
+        System.out.println("3) A expansão das florestas seria inibida, em longo prazo, pelo excesso de gás carbônico liberado.");
+        System.out.println("4) Diminuiria o efeito estufa, com a liberação de gás carbônico, em decorrência da expansão da cobertura vegetal.");
+        System.out.print("Digite o numero da resposta: ");
+        int opcao4 = scanner.nextInt();
+        if (opcao4 == 1){
+            ++acertos;
+        }
+
+        System.out.println("");
+        System.out.println("V - A biodiversidade é afetada de diferentes formas pelo aquecimento global. Sobre o tema, analise as alternativas abaixo e marque a incorreta.");
+        System.out.println("1) Muitas espécies podem entrar em extinção em decorrência do aquecimento global.");
+        System.out.println("2) O urso-polar é um grande símbolo na luta contra o aquecimento global, em decorrência do aumento exagerado de indivíduos, causado pelo aumento de alimentos disponíveis no oceano, fato que leva à competição.");
+        System.out.println("3) O aquecimento global pode desencadear um aumento de epidemias no planeta, uma vez que ambientes quentes favorecem a multiplicação de vários vetores, como o Aedes aegypti.");
+        System.out.println("4) Secas e chuvas inesperadas podem afetar a reprodução de uma série de espécies de plantas.");
+        System.out.print("Digite o numero da resposta: ");
+        int opcao5 = scanner.nextInt();
+        if (opcao5 == 2){
+            ++acertos;
+        }
+        scanner.close();
+        System.out.println("");
+        System.out.println("Numero de acertos" + acertos);
+        if (acertos == 5){
+            System.out.println("Excelente");
+        }else if (acertos < 5 && acertos >= 3){
+            System.out.println("Muito bom");
+        }else{
+            System.out.println("É o momento de aprimorar seu conhecimento sobre o aquecimento global");
+            System.out.println("Alguns sites para melhorar o conhecimento:");
+            System.out.println("https://exercicios.mundoeducacao.uol.com.br/exercicios-biologia/exercicios-sobre-aquecimento-global-biodiversidade.htm");
+            System.out.println("https://tunesambiental.com/5-curiosidades-e-24-fatos-sobre-mudanca-climatica-que-voce-precisa-saber/");
+            System.out.println("https://brasilescola.uol.com.br/geografia/aquecimento-global.htm");
+        }
+    }   
+}
